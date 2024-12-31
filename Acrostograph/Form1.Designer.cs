@@ -54,6 +54,8 @@ namespace Acrostograph
             this.btn_video_maker = new System.Windows.Forms.Button();
             this.rchtxtbx_make_video_output = new System.Windows.Forms.RichTextBox();
             this.btn_image_maker_rtxbx_clear = new System.Windows.Forms.Button();
+            this.pcbx_split_images = new System.Windows.Forms.PictureBox();
+            this.lbl_saving_imges_folder = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.picbx_Original)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picbx_result)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -65,6 +67,7 @@ namespace Acrostograph
             this.panel2.SuspendLayout();
             this.tab_image_maker.SuspendLayout();
             this.tab_video_maker.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pcbx_split_images)).BeginInit();
             this.SuspendLayout();
             // 
             // picbx_Original
@@ -231,6 +234,8 @@ namespace Acrostograph
             // 
             // tab_image_maker
             // 
+            this.tab_image_maker.Controls.Add(this.lbl_saving_imges_folder);
+            this.tab_image_maker.Controls.Add(this.pcbx_split_images);
             this.tab_image_maker.Controls.Add(this.btn_image_maker_rtxbx_clear);
             this.tab_image_maker.Controls.Add(this.lbl_video_to_split);
             this.tab_image_maker.Controls.Add(this.rchtxbx_splitting_video_output);
@@ -246,7 +251,7 @@ namespace Acrostograph
             // lbl_video_to_split
             // 
             this.lbl_video_to_split.AutoSize = true;
-            this.lbl_video_to_split.Location = new System.Drawing.Point(63, 456);
+            this.lbl_video_to_split.Location = new System.Drawing.Point(45, 20);
             this.lbl_video_to_split.Name = "lbl_video_to_split";
             this.lbl_video_to_split.Size = new System.Drawing.Size(41, 20);
             this.lbl_video_to_split.TabIndex = 3;
@@ -256,13 +261,13 @@ namespace Acrostograph
             // 
             this.rchtxbx_splitting_video_output.Location = new System.Drawing.Point(49, 59);
             this.rchtxbx_splitting_video_output.Name = "rchtxbx_splitting_video_output";
-            this.rchtxbx_splitting_video_output.Size = new System.Drawing.Size(330, 341);
+            this.rchtxbx_splitting_video_output.Size = new System.Drawing.Size(387, 341);
             this.rchtxbx_splitting_video_output.TabIndex = 2;
             this.rchtxbx_splitting_video_output.Text = "";
             // 
             // btn_video_to_split
             // 
-            this.btn_video_to_split.Location = new System.Drawing.Point(562, 146);
+            this.btn_video_to_split.Location = new System.Drawing.Point(49, 436);
             this.btn_video_to_split.Name = "btn_video_to_split";
             this.btn_video_to_split.Size = new System.Drawing.Size(121, 47);
             this.btn_video_to_split.TabIndex = 1;
@@ -272,7 +277,7 @@ namespace Acrostograph
             // 
             // btn_split_video
             // 
-            this.btn_split_video.Location = new System.Drawing.Point(562, 245);
+            this.btn_split_video.Location = new System.Drawing.Point(258, 436);
             this.btn_split_video.Name = "btn_split_video";
             this.btn_split_video.Size = new System.Drawing.Size(121, 47);
             this.btn_split_video.TabIndex = 0;
@@ -311,13 +316,32 @@ namespace Acrostograph
             // 
             // btn_image_maker_rtxbx_clear
             // 
-            this.btn_image_maker_rtxbx_clear.Location = new System.Drawing.Point(562, 344);
+            this.btn_image_maker_rtxbx_clear.Location = new System.Drawing.Point(440, 436);
             this.btn_image_maker_rtxbx_clear.Name = "btn_image_maker_rtxbx_clear";
             this.btn_image_maker_rtxbx_clear.Size = new System.Drawing.Size(121, 47);
             this.btn_image_maker_rtxbx_clear.TabIndex = 4;
             this.btn_image_maker_rtxbx_clear.Text = "Clear";
             this.btn_image_maker_rtxbx_clear.UseVisualStyleBackColor = true;
             this.btn_image_maker_rtxbx_clear.Click += new System.EventHandler(this.btn_image_maker_rtxbx_clear_Click);
+            // 
+            // pcbx_split_images
+            // 
+            this.pcbx_split_images.Location = new System.Drawing.Point(523, 59);
+            this.pcbx_split_images.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.pcbx_split_images.Name = "pcbx_split_images";
+            this.pcbx_split_images.Size = new System.Drawing.Size(402, 341);
+            this.pcbx_split_images.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pcbx_split_images.TabIndex = 5;
+            this.pcbx_split_images.TabStop = false;
+            // 
+            // lbl_saving_imges_folder
+            // 
+            this.lbl_saving_imges_folder.AutoSize = true;
+            this.lbl_saving_imges_folder.Location = new System.Drawing.Point(45, 504);
+            this.lbl_saving_imges_folder.Name = "lbl_saving_imges_folder";
+            this.lbl_saving_imges_folder.Size = new System.Drawing.Size(41, 20);
+            this.lbl_saving_imges_folder.TabIndex = 6;
+            this.lbl_saving_imges_folder.Text = "........";
             // 
             // Form1
             // 
@@ -342,6 +366,7 @@ namespace Acrostograph
             this.tab_image_maker.ResumeLayout(false);
             this.tab_image_maker.PerformLayout();
             this.tab_video_maker.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pcbx_split_images)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -372,6 +397,8 @@ namespace Acrostograph
         private System.Windows.Forms.RichTextBox rchtxtbx_make_video_output;
         private System.Windows.Forms.Button btn_video_maker;
         private System.Windows.Forms.Button btn_image_maker_rtxbx_clear;
+        private System.Windows.Forms.PictureBox pcbx_split_images;
+        private System.Windows.Forms.Label lbl_saving_imges_folder;
     }
 }
 

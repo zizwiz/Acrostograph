@@ -201,25 +201,44 @@ namespace Acrostograph
         }
 
         private void btn_video_to_split_Click(object sender, EventArgs e)
-        {
+        { 
+            string pathName = "";
+
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
             {
+               
                 openFileDialog.Filter = "Video Files|*.mp4;*.m4v;*.mov;*.avi;*.mkv;*.wmv|All Files|*.*";
                 openFileDialog.Title = "Select a Video File";
                 if (openFileDialog.ShowDialog() == DialogResult.OK)
                 {
-
+                    pathName = Path.GetDirectoryName(openFileDialog.FileName);
                     lbl_video_to_split.Text = openFileDialog.FileName;
+                }
+            }
 
+            using (FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog())
+            {
+                folderBrowserDialog.SelectedPath = pathName;
+                folderBrowserDialog.Description = "Select a Directory for the output";
+                folderBrowserDialog.ShowNewFolderButton = true;
 
+                DialogResult result = folderBrowserDialog.ShowDialog();
 
+                if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(folderBrowserDialog.SelectedPath))
+                {
+                    //lbl_saving_imges_folder.Text = ("Saving image files to: ");
+                    lbl_saving_imges_folder.Text = folderBrowserDialog.SelectedPath;
+                }
+                else
+                {
+                    MessageBox.Show("No directory selected.", "Directory Selection", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
         }
 
         private void btn_split_video_Click(object sender, EventArgs e)
         {
-            FrameMaker.SplitVideoIntoImages(lbl_video_to_split.Text, rchtxbx_splitting_video_output);
+            FrameMaker.SplitVideoIntoImages(lbl_video_to_split.Text, rchtxbx_splitting_video_output, pcbx_split_images, lbl_saving_imges_folder.Text);
         }
 
         private void btn_video_maker_Click(object sender, EventArgs e)
@@ -230,6 +249,7 @@ namespace Acrostograph
         private void btn_image_maker_rtxbx_clear_Click(object sender, EventArgs e)
         {
             rchtxbx_splitting_video_output.Clear();
+            pcbx_split_images.Image = null;
         }
     }
 }

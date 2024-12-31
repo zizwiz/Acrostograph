@@ -9,22 +9,8 @@ namespace Acrostograph
 {
     class FrameMaker
     {
-
-
-        //private void btnSplitVideo_Click(object sender, EventArgs e)
-        //{
-        //    // Open file dialog to select video
-        //    using (OpenFileDialog openFileDialog = new OpenFileDialog())
-        //    {
-        //        openFileDialog.Filter = "Video Files|*.mp4;*.avi;*.mov";
-        //        if (openFileDialog.ShowDialog() == DialogResult.OK)
-        //        {
-        //            string videoPath = openFileDialog.FileName;
-        //            SplitVideoIntoImages(videoPath);
-        //        }
-        //    }
-        //}
-        public static void SplitVideoIntoImages(string videoPath, RichTextBox myRichTextBox)
+        public static void SplitVideoIntoImages(string videoPath, RichTextBox myRichTextBox, PictureBox myPictureBox,
+        string myImageOutput)
         {
             // Create a VideoCapture object
             using (VideoCapture capture = new VideoCapture(videoPath))
@@ -34,34 +20,47 @@ namespace Acrostograph
 
                 myRichTextBox.AppendText("FrameCount = " + frameCount + "\r");
                 myRichTextBox.AppendText("FrameRate = " + frameRate + "\r");
-
-
-                // Create a directory to save images
-                string outputDir = Path.Combine(Path.GetDirectoryName(videoPath), "ExtractedFrames");
-                Directory.CreateDirectory(outputDir);
+                
                 for (int i = 0; i < frameCount; i++)
                 {
                     // Read the frame
                     using (Mat frame = capture.QueryFrame())
                     {
-                        if (frame == null)
-                            break;
+                        if (frame == null) break;
+
                         // Convert frame to Bitmap
                         Bitmap bitmap = frame.ToBitmap();
+
                         // Save the frame as an image
-                        string imagePath = Path.Combine(outputDir, $"{i:D4}.png");
+                        string imagePath = Path.Combine(myImageOutput, $"{i:D4}.png");
                         bitmap.Save(imagePath);
+
+                        // show what we have just saved
                         myRichTextBox.AppendText($"Saved Image: {i:D4}.png\r");
                         myRichTextBox.ScrollToCaret();
+                        myPictureBox.Image = new Bitmap(imagePath);
                     }
 
                     GC.Collect();
                 }
 
-                myRichTextBox.AppendText($"\rFrames extracted to:\r {outputDir}\r");
+                if (frameCount > 1)
+                {
+                    myRichTextBox.AppendText("\rExtracted " + frameCount + " frames to:\r");
+                    myRichTextBox.AppendText(myImageOutput + "\r");
+                }
+                else if (frameCount == 0)
+                {
+                    myRichTextBox.AppendText("\rNo frames extracted.\r");
+                }
+                else
+                {
+                    myRichTextBox.AppendText("\rExtracted " + frameCount + " frame to:\r");
+                    myRichTextBox.AppendText(myImageOutput + "\r");
+                }
+                
+                
                 myRichTextBox.ScrollToCaret();
-
-                // MessageBox.Show($"Frames extracted to {outputDir}", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
