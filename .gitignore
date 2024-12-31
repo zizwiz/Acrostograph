@@ -3,3 +3,6 @@
 ################################################################################
 
 /Acrostograph/obj
+/Acrostograph/bin/Debug
+/Acrostograph/bin/x64/Debug
+/packages
