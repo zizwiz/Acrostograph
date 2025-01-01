@@ -1,18 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Acrostograph.utilities;
-//using WMPLib;
-//using MediaInfo;
 
 namespace Acrostograph
 {
@@ -66,16 +59,16 @@ namespace Acrostograph
 
         string ffmpegPath = "ffmpeg.exe";
         string inputVideoPath = "";
-        string outputFolder = "";
+        //string outputFolder = "";
         string duration = "";
         string videoName = "";
-        string outputFormat = "jpg";
-        string outputPath = "";
+        //string outputFormat = "jpg";
+        //string outputPath = "";
         double totalDurationInSeconds;
-        int extractionSeconds;
-        double fps;
-        double numberOfFramesForExtraction;
-        private Process extractionProc = null;
+        //int extractionSeconds;
+        //double fps;
+        //double numberOfFramesForExtraction;
+       // private Process extractionProc = null;
 
         private void btn_open_video_Click(object sender, EventArgs e)
         {
@@ -204,6 +197,8 @@ namespace Acrostograph
         { 
             string pathName = "";
 
+            // Open the video file
+           
             using (OpenFileDialog openFileDialog = new OpenFileDialog())
             {
                
@@ -216,24 +211,9 @@ namespace Acrostograph
                 }
             }
 
-            using (FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog())
-            {
-                folderBrowserDialog.SelectedPath = pathName;
-                folderBrowserDialog.Description = "Select a Directory for the output";
-                folderBrowserDialog.ShowNewFolderButton = true;
-
-                DialogResult result = folderBrowserDialog.ShowDialog();
-
-                if (result == DialogResult.OK && !string.IsNullOrWhiteSpace(folderBrowserDialog.SelectedPath))
-                {
-                    //lbl_saving_imges_folder.Text = ("Saving image files to: ");
-                    lbl_saving_imges_folder.Text = folderBrowserDialog.SelectedPath;
-                }
-                else
-                {
-                    MessageBox.Show("No directory selected.", "Directory Selection", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-            }
+            // Choose the directory to place the images in (999 = error)
+            lbl_saving_imges_folder.Text = OpenFolderDialog.ChooseDirectory(pathName, "Select a Directory for the output");
+            
         }
 
         private void btn_split_video_Click(object sender, EventArgs e)
@@ -243,13 +223,25 @@ namespace Acrostograph
 
         private void btn_video_maker_Click(object sender, EventArgs e)
         {
-            VideoMaker.JoinImagesintoVideo("ng imagesPath", rchtxtbx_make_video_output);
+            VideoMaker.JoinImagesintoVideo(rchtxtbx_make_video_output);
         }
 
         private void btn_image_maker_rtxbx_clear_Click(object sender, EventArgs e)
         {
             rchtxbx_splitting_video_output.Clear();
             pcbx_split_images.Image = null;
+        }
+
+        private void btn_list_files_Click(object sender, EventArgs e)
+        {
+            rchtxbx_modify_frames_output.Clear();
+
+            foreach (string fileName in OpenFolderDialog.GetFileNames(@"C:\Users\itobo\source\repos\Acrostograph\Acrostograph\bin\x64\Debug\output",
+                         "Select a Directory for the output"))
+            {
+                rchtxbx_modify_frames_output.AppendText(fileName + "\r");
+                rchtxbx_modify_frames_output.ScrollToCaret();
+            }
         }
     }
 }

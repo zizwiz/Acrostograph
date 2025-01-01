@@ -46,16 +46,20 @@ namespace Acrostograph
             this.btn_close_video = new System.Windows.Forms.Button();
             this.btn_open_video = new System.Windows.Forms.Button();
             this.tab_image_maker = new System.Windows.Forms.TabPage();
+            this.lbl_saving_imges_folder = new System.Windows.Forms.Label();
+            this.pcbx_split_images = new System.Windows.Forms.PictureBox();
+            this.btn_image_maker_rtxbx_clear = new System.Windows.Forms.Button();
             this.lbl_video_to_split = new System.Windows.Forms.Label();
             this.rchtxbx_splitting_video_output = new System.Windows.Forms.RichTextBox();
             this.btn_video_to_split = new System.Windows.Forms.Button();
             this.btn_split_video = new System.Windows.Forms.Button();
             this.tab_video_maker = new System.Windows.Forms.TabPage();
-            this.btn_video_maker = new System.Windows.Forms.Button();
             this.rchtxtbx_make_video_output = new System.Windows.Forms.RichTextBox();
-            this.btn_image_maker_rtxbx_clear = new System.Windows.Forms.Button();
-            this.pcbx_split_images = new System.Windows.Forms.PictureBox();
-            this.lbl_saving_imges_folder = new System.Windows.Forms.Label();
+            this.btn_video_creater = new System.Windows.Forms.Button();
+            this.btn_play_created_video = new System.Windows.Forms.Button();
+            this.tab_modify_frames = new System.Windows.Forms.TabPage();
+            this.rchtxbx_modify_frames_output = new System.Windows.Forms.RichTextBox();
+            this.btn_list_files = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.picbx_Original)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picbx_result)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -66,8 +70,9 @@ namespace Acrostograph
             ((System.ComponentModel.ISupportInitialize)(this.WinMediaPlayer)).BeginInit();
             this.panel2.SuspendLayout();
             this.tab_image_maker.SuspendLayout();
-            this.tab_video_maker.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pcbx_split_images)).BeginInit();
+            this.tab_video_maker.SuspendLayout();
+            this.tab_modify_frames.SuspendLayout();
             this.SuspendLayout();
             // 
             // picbx_Original
@@ -116,10 +121,11 @@ namespace Acrostograph
             this.tabControl1.Controls.Add(this.tab_video_player);
             this.tabControl1.Controls.Add(this.tab_image_maker);
             this.tabControl1.Controls.Add(this.tab_video_maker);
+            this.tabControl1.Controls.Add(this.tab_modify_frames);
             this.tabControl1.Location = new System.Drawing.Point(96, 71);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(961, 569);
+            this.tabControl1.Size = new System.Drawing.Size(997, 607);
             this.tabControl1.TabIndex = 8;
             // 
             // tabPage1
@@ -131,7 +137,7 @@ namespace Acrostograph
             this.tabPage1.Location = new System.Drawing.Point(4, 29);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(953, 536);
+            this.tabPage1.Size = new System.Drawing.Size(989, 574);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "tabPage1";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -142,7 +148,7 @@ namespace Acrostograph
             this.tab_video_player.Location = new System.Drawing.Point(4, 29);
             this.tab_video_player.Name = "tab_video_player";
             this.tab_video_player.Padding = new System.Windows.Forms.Padding(3);
-            this.tab_video_player.Size = new System.Drawing.Size(953, 536);
+            this.tab_video_player.Size = new System.Drawing.Size(989, 574);
             this.tab_video_player.TabIndex = 1;
             this.tab_video_player.Text = "Video Player";
             this.tab_video_player.UseVisualStyleBackColor = true;
@@ -159,7 +165,7 @@ namespace Acrostograph
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 80F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(947, 530);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(983, 568);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
             // panel1
@@ -168,7 +174,7 @@ namespace Acrostograph
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(3, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(941, 444);
+            this.panel1.Size = new System.Drawing.Size(977, 482);
             this.panel1.TabIndex = 0;
             // 
             // WinMediaPlayer
@@ -178,7 +184,7 @@ namespace Acrostograph
             this.WinMediaPlayer.Location = new System.Drawing.Point(0, 0);
             this.WinMediaPlayer.Name = "WinMediaPlayer";
             this.WinMediaPlayer.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("WinMediaPlayer.OcxState")));
-            this.WinMediaPlayer.Size = new System.Drawing.Size(941, 444);
+            this.WinMediaPlayer.Size = new System.Drawing.Size(977, 482);
             this.WinMediaPlayer.TabIndex = 0;
             this.WinMediaPlayer.MediaError += new AxWMPLib._WMPOCXEvents_MediaErrorEventHandler(this.WinMediaPlayer_MediaError);
             // 
@@ -189,9 +195,9 @@ namespace Acrostograph
             this.panel2.Controls.Add(this.btn_close_video);
             this.panel2.Controls.Add(this.btn_open_video);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(3, 453);
+            this.panel2.Location = new System.Drawing.Point(3, 491);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(941, 74);
+            this.panel2.Size = new System.Drawing.Size(977, 74);
             this.panel2.TabIndex = 1;
             // 
             // lbl_tot_video_time
@@ -214,9 +220,9 @@ namespace Acrostograph
             // 
             // btn_close_video
             // 
-            this.btn_close_video.Location = new System.Drawing.Point(672, 3);
+            this.btn_close_video.Location = new System.Drawing.Point(868, 34);
             this.btn_close_video.Name = "btn_close_video";
-            this.btn_close_video.Size = new System.Drawing.Size(171, 51);
+            this.btn_close_video.Size = new System.Drawing.Size(106, 37);
             this.btn_close_video.TabIndex = 9;
             this.btn_close_video.Text = "Close Video";
             this.btn_close_video.UseVisualStyleBackColor = true;
@@ -224,9 +230,9 @@ namespace Acrostograph
             // 
             // btn_open_video
             // 
-            this.btn_open_video.Location = new System.Drawing.Point(471, 3);
+            this.btn_open_video.Location = new System.Drawing.Point(868, 0);
             this.btn_open_video.Name = "btn_open_video";
-            this.btn_open_video.Size = new System.Drawing.Size(171, 51);
+            this.btn_open_video.Size = new System.Drawing.Size(109, 28);
             this.btn_open_video.TabIndex = 1;
             this.btn_open_video.Text = "Open Video";
             this.btn_open_video.UseVisualStyleBackColor = true;
@@ -243,10 +249,39 @@ namespace Acrostograph
             this.tab_image_maker.Controls.Add(this.btn_split_video);
             this.tab_image_maker.Location = new System.Drawing.Point(4, 29);
             this.tab_image_maker.Name = "tab_image_maker";
-            this.tab_image_maker.Size = new System.Drawing.Size(953, 536);
+            this.tab_image_maker.Size = new System.Drawing.Size(989, 574);
             this.tab_image_maker.TabIndex = 2;
             this.tab_image_maker.Text = "Image maker";
             this.tab_image_maker.UseVisualStyleBackColor = true;
+            // 
+            // lbl_saving_imges_folder
+            // 
+            this.lbl_saving_imges_folder.AutoSize = true;
+            this.lbl_saving_imges_folder.Location = new System.Drawing.Point(45, 504);
+            this.lbl_saving_imges_folder.Name = "lbl_saving_imges_folder";
+            this.lbl_saving_imges_folder.Size = new System.Drawing.Size(41, 20);
+            this.lbl_saving_imges_folder.TabIndex = 6;
+            this.lbl_saving_imges_folder.Text = "........";
+            // 
+            // pcbx_split_images
+            // 
+            this.pcbx_split_images.Location = new System.Drawing.Point(523, 59);
+            this.pcbx_split_images.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.pcbx_split_images.Name = "pcbx_split_images";
+            this.pcbx_split_images.Size = new System.Drawing.Size(402, 341);
+            this.pcbx_split_images.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pcbx_split_images.TabIndex = 5;
+            this.pcbx_split_images.TabStop = false;
+            // 
+            // btn_image_maker_rtxbx_clear
+            // 
+            this.btn_image_maker_rtxbx_clear.Location = new System.Drawing.Point(440, 436);
+            this.btn_image_maker_rtxbx_clear.Name = "btn_image_maker_rtxbx_clear";
+            this.btn_image_maker_rtxbx_clear.Size = new System.Drawing.Size(121, 47);
+            this.btn_image_maker_rtxbx_clear.TabIndex = 4;
+            this.btn_image_maker_rtxbx_clear.Text = "Clear";
+            this.btn_image_maker_rtxbx_clear.UseVisualStyleBackColor = true;
+            this.btn_image_maker_rtxbx_clear.Click += new System.EventHandler(this.btn_image_maker_rtxbx_clear_Click);
             // 
             // lbl_video_to_split
             // 
@@ -287,61 +322,71 @@ namespace Acrostograph
             // 
             // tab_video_maker
             // 
+            this.tab_video_maker.Controls.Add(this.btn_play_created_video);
             this.tab_video_maker.Controls.Add(this.rchtxtbx_make_video_output);
-            this.tab_video_maker.Controls.Add(this.btn_video_maker);
+            this.tab_video_maker.Controls.Add(this.btn_video_creater);
             this.tab_video_maker.Location = new System.Drawing.Point(4, 29);
             this.tab_video_maker.Name = "tab_video_maker";
-            this.tab_video_maker.Size = new System.Drawing.Size(953, 536);
+            this.tab_video_maker.Size = new System.Drawing.Size(989, 574);
             this.tab_video_maker.TabIndex = 3;
             this.tab_video_maker.Text = "Video Maker";
             this.tab_video_maker.UseVisualStyleBackColor = true;
             // 
-            // btn_video_maker
-            // 
-            this.btn_video_maker.Location = new System.Drawing.Point(404, 220);
-            this.btn_video_maker.Name = "btn_video_maker";
-            this.btn_video_maker.Size = new System.Drawing.Size(132, 40);
-            this.btn_video_maker.TabIndex = 0;
-            this.btn_video_maker.Text = "Make Video";
-            this.btn_video_maker.UseVisualStyleBackColor = true;
-            this.btn_video_maker.Click += new System.EventHandler(this.btn_video_maker_Click);
-            // 
             // rchtxtbx_make_video_output
             // 
-            this.rchtxtbx_make_video_output.Location = new System.Drawing.Point(65, 74);
+            this.rchtxtbx_make_video_output.Location = new System.Drawing.Point(65, 33);
             this.rchtxtbx_make_video_output.Name = "rchtxtbx_make_video_output";
-            this.rchtxtbx_make_video_output.Size = new System.Drawing.Size(264, 309);
+            this.rchtxtbx_make_video_output.Size = new System.Drawing.Size(835, 309);
             this.rchtxtbx_make_video_output.TabIndex = 1;
             this.rchtxtbx_make_video_output.Text = "";
             // 
-            // btn_image_maker_rtxbx_clear
+            // btn_video_creater
             // 
-            this.btn_image_maker_rtxbx_clear.Location = new System.Drawing.Point(440, 436);
-            this.btn_image_maker_rtxbx_clear.Name = "btn_image_maker_rtxbx_clear";
-            this.btn_image_maker_rtxbx_clear.Size = new System.Drawing.Size(121, 47);
-            this.btn_image_maker_rtxbx_clear.TabIndex = 4;
-            this.btn_image_maker_rtxbx_clear.Text = "Clear";
-            this.btn_image_maker_rtxbx_clear.UseVisualStyleBackColor = true;
-            this.btn_image_maker_rtxbx_clear.Click += new System.EventHandler(this.btn_image_maker_rtxbx_clear_Click);
+            this.btn_video_creater.Location = new System.Drawing.Point(768, 493);
+            this.btn_video_creater.Name = "btn_video_creater";
+            this.btn_video_creater.Size = new System.Drawing.Size(132, 40);
+            this.btn_video_creater.TabIndex = 0;
+            this.btn_video_creater.Text = "Create Video";
+            this.btn_video_creater.UseVisualStyleBackColor = true;
+            this.btn_video_creater.Click += new System.EventHandler(this.btn_video_maker_Click);
             // 
-            // pcbx_split_images
+            // btn_play_created_video
             // 
-            this.pcbx_split_images.Location = new System.Drawing.Point(523, 59);
-            this.pcbx_split_images.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.pcbx_split_images.Name = "pcbx_split_images";
-            this.pcbx_split_images.Size = new System.Drawing.Size(402, 341);
-            this.pcbx_split_images.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pcbx_split_images.TabIndex = 5;
-            this.pcbx_split_images.TabStop = false;
+            this.btn_play_created_video.Location = new System.Drawing.Point(550, 493);
+            this.btn_play_created_video.Name = "btn_play_created_video";
+            this.btn_play_created_video.Size = new System.Drawing.Size(170, 40);
+            this.btn_play_created_video.TabIndex = 2;
+            this.btn_play_created_video.Text = "Play Created Video";
+            this.btn_play_created_video.UseVisualStyleBackColor = true;
             // 
-            // lbl_saving_imges_folder
+            // tab_modify_frames
             // 
-            this.lbl_saving_imges_folder.AutoSize = true;
-            this.lbl_saving_imges_folder.Location = new System.Drawing.Point(45, 504);
-            this.lbl_saving_imges_folder.Name = "lbl_saving_imges_folder";
-            this.lbl_saving_imges_folder.Size = new System.Drawing.Size(41, 20);
-            this.lbl_saving_imges_folder.TabIndex = 6;
-            this.lbl_saving_imges_folder.Text = "........";
+            this.tab_modify_frames.Controls.Add(this.btn_list_files);
+            this.tab_modify_frames.Controls.Add(this.rchtxbx_modify_frames_output);
+            this.tab_modify_frames.Location = new System.Drawing.Point(4, 29);
+            this.tab_modify_frames.Name = "tab_modify_frames";
+            this.tab_modify_frames.Size = new System.Drawing.Size(989, 574);
+            this.tab_modify_frames.TabIndex = 4;
+            this.tab_modify_frames.Text = "Modify Frames";
+            this.tab_modify_frames.UseVisualStyleBackColor = true;
+            // 
+            // rchtxbx_modify_frames_output
+            // 
+            this.rchtxbx_modify_frames_output.Location = new System.Drawing.Point(56, 29);
+            this.rchtxbx_modify_frames_output.Name = "rchtxbx_modify_frames_output";
+            this.rchtxbx_modify_frames_output.Size = new System.Drawing.Size(366, 473);
+            this.rchtxbx_modify_frames_output.TabIndex = 0;
+            this.rchtxbx_modify_frames_output.Text = "";
+            // 
+            // btn_list_files
+            // 
+            this.btn_list_files.Location = new System.Drawing.Point(581, 84);
+            this.btn_list_files.Name = "btn_list_files";
+            this.btn_list_files.Size = new System.Drawing.Size(172, 65);
+            this.btn_list_files.TabIndex = 1;
+            this.btn_list_files.Text = "List Files";
+            this.btn_list_files.UseVisualStyleBackColor = true;
+            this.btn_list_files.Click += new System.EventHandler(this.btn_list_files_Click);
             // 
             // Form1
             // 
@@ -365,8 +410,9 @@ namespace Acrostograph
             this.panel2.PerformLayout();
             this.tab_image_maker.ResumeLayout(false);
             this.tab_image_maker.PerformLayout();
-            this.tab_video_maker.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pcbx_split_images)).EndInit();
+            this.tab_video_maker.ResumeLayout(false);
+            this.tab_modify_frames.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -395,10 +441,14 @@ namespace Acrostograph
         private System.Windows.Forms.Button btn_split_video;
         private System.Windows.Forms.TabPage tab_video_maker;
         private System.Windows.Forms.RichTextBox rchtxtbx_make_video_output;
-        private System.Windows.Forms.Button btn_video_maker;
+        private System.Windows.Forms.Button btn_video_creater;
         private System.Windows.Forms.Button btn_image_maker_rtxbx_clear;
         private System.Windows.Forms.PictureBox pcbx_split_images;
         private System.Windows.Forms.Label lbl_saving_imges_folder;
+        private System.Windows.Forms.Button btn_play_created_video;
+        private System.Windows.Forms.TabPage tab_modify_frames;
+        private System.Windows.Forms.Button btn_list_files;
+        private System.Windows.Forms.RichTextBox rchtxbx_modify_frames_output;
     }
 }
 
