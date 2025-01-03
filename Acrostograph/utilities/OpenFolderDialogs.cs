@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace Acrostograph.utilities
 {
-    class OpenFolderDialog
+    class OpenFolderDialogs
     {
         /// <summary>
         /// Gets a List of the files in the directory by name.

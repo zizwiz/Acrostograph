@@ -141,11 +141,14 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="FrameMaker.cs" />
+    <Compile Include="ModifyImages.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="utilities\ExtractVideoFrames.cs" />
     <Compile Include="utilities\ImageUtilities.cs" />
-    <Compile Include="utilities\OpenFolderDialog.cs" />
+    <Compile Include="utilities\OpenFileDialogs.cs" />
+    <Compile Include="utilities\OpenFolderDialogs.cs" />
+    <Compile Include="utilities\RichTextBoxUtils.cs" />
     <Compile Include="VideoMaker.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>

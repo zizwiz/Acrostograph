@@ -212,7 +212,7 @@ namespace Acrostograph
             }
 
             // Choose the directory to place the images in (999 = error)
-            lbl_saving_imges_folder.Text = OpenFolderDialog.ChooseDirectory(pathName, "Select a Directory for the output");
+            lbl_saving_imges_folder.Text = OpenFolderDialogs.ChooseDirectory(pathName, "Select a Directory for the output");
             
         }
 
@@ -234,14 +234,51 @@ namespace Acrostograph
 
         private void btn_list_files_Click(object sender, EventArgs e)
         {
-            rchtxbx_modify_frames_output.Clear();
+          //  rchtxbx_modify_frames_output.Clear();
 
-            foreach (string fileName in OpenFolderDialog.GetFileNames(@"C:\Users\itobo\source\repos\Acrostograph\Acrostograph\bin\x64\Debug\output",
-                         "Select a Directory for the output"))
-            {
-                rchtxbx_modify_frames_output.AppendText(fileName + "\r");
-                rchtxbx_modify_frames_output.ScrollToCaret();
-            }
+          //foreach (string fileName in OpenFolderDialogs.GetFileNames(
+          //      @"C:\Users\itobo\source\repos\Acrostograph\Acrostograph\bin\x64\Debug\output",
+          //      "Select a Directory for the output"))
+          //  {
+          //      rchtxbx_modify_frames_output.AppendText(fileName + "\r");
+          //      rchtxbx_modify_frames_output.ScrollToCaret();
+          //  }
+
+            ModifyImages.ShowAllImages(flowlayoutpnl_modfy_frames, 
+                @"C:\Users\itobo\source\repos\Acrostograph\Acrostograph\bin\x64\Debug\output", 
+                picbx_choosen_image,
+                rchtxbx_modify_frames_output,
+            lbl_choosen_image);
+
+        }
+
+        private void btn_movelineup_modify_frames_output_rchtxbx_Click(object sender, EventArgs e)
+        {
+            //Get the line number
+            int LineNumber = rchtxbx_modify_frames_output.GetLineFromCharIndex(rchtxbx_modify_frames_output.SelectionStart);
+
+            //move line up
+            RichTextBoxUtils.MoveLineUp(rchtxbx_modify_frames_output, rchtxbx_modify_frames_output.GetLineFromCharIndex(rchtxbx_modify_frames_output.SelectionStart));
+
+            //move cursor to be at same position as the line
+            if (LineNumber < 1) return;
+            rchtxbx_modify_frames_output.SelectionStart = rchtxbx_modify_frames_output.GetFirstCharIndexFromLine(LineNumber - 1); 
+            rchtxbx_modify_frames_output.ScrollToCaret();
+        }
+
+        private void btn_movelinedown_modify_frames_output_rchtxbx_Click(object sender, EventArgs e)
+        {
+            RichTextBoxUtils.MoveLineDown(rchtxbx_modify_frames_output, rchtxbx_modify_frames_output.GetLineFromCharIndex(rchtxbx_modify_frames_output.SelectionStart));
+
+
+            //move cursor to be at same position as the line
+            rchtxbx_modify_frames_output.SelectionStart = rchtxbx_modify_frames_output.GetFirstCharIndexFromLine(rchtxbx_modify_frames_output.GetLineFromCharIndex(rchtxbx_modify_frames_output.SelectionStart) - 1);
+            rchtxbx_modify_frames_output.ScrollToCaret();
+        }
+
+        private void btn_deleteline_modify_frames_output_rchtxbx_Click(object sender, EventArgs e)
+        {
+            RichTextBoxUtils.DeleteLine(rchtxbx_modify_frames_output, rchtxbx_modify_frames_output.GetLineFromCharIndex(rchtxbx_modify_frames_output.SelectionStart));
         }
     }
 }
