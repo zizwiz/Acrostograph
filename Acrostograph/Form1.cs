@@ -260,10 +260,6 @@ namespace Acrostograph
             //move line up
             RichTextBoxUtils.MoveLineUp(rchtxbx_modify_frames_output, rchtxbx_modify_frames_output.GetLineFromCharIndex(rchtxbx_modify_frames_output.SelectionStart));
 
-            //move cursor to be at same position as the line
-            if (LineNumber < 1) return;
-            rchtxbx_modify_frames_output.SelectionStart = rchtxbx_modify_frames_output.GetFirstCharIndexFromLine(LineNumber - 1); 
-            rchtxbx_modify_frames_output.ScrollToCaret();
         }
 
         private void btn_movelinedown_modify_frames_output_rchtxbx_Click(object sender, EventArgs e)

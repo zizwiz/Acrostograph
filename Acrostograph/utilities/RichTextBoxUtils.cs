@@ -21,6 +21,10 @@ namespace Acrostograph.utilities
             lines[lineIndex] = temp;
 
             myRichTextBox.Lines = lines;
+
+            //move cursor to be at same position as the line
+            myRichTextBox.SelectionStart = myRichTextBox.GetFirstCharIndexFromLine(lineIndex - 1);
+            myRichTextBox.ScrollToCaret();
         }
 
         public static void MoveLineDown(RichTextBox myRichTextBox, int lineIndex)
