@@ -148,7 +148,7 @@
     <Compile Include="utilities\ImageUtilities.cs" />
     <Compile Include="utilities\OpenFileDialogs.cs" />
     <Compile Include="utilities\OpenFolderDialogs.cs" />
-    <Compile Include="utilities\RichTextBoxUtils.cs" />
+    <Compile Include="utilities\ListBoxUtils.cs" />
     <Compile Include="VideoMaker.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>

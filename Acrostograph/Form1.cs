@@ -223,7 +223,12 @@ namespace Acrostograph
 
         private void btn_video_maker_Click(object sender, EventArgs e)
         {
-            VideoMaker.JoinImagesintoVideo(rchtxtbx_make_video_output);
+            VideoMaker.JoinImagesintoVideo(rchtxtbx_make_video_output, null);
+        }
+
+        private void btn_create_modified_video_Click(object sender, EventArgs e)
+        {
+            VideoMaker.JoinImagesintoVideo(rchtxtbx_make_video_output, lstbx_modify_frames_output);
         }
 
         private void btn_image_maker_rtxbx_clear_Click(object sender, EventArgs e)
@@ -234,47 +239,34 @@ namespace Acrostograph
 
         private void btn_list_files_Click(object sender, EventArgs e)
         {
-          //  rchtxbx_modify_frames_output.Clear();
-
-          //foreach (string fileName in OpenFolderDialogs.GetFileNames(
-          //      @"C:\Users\itobo\source\repos\Acrostograph\Acrostograph\bin\x64\Debug\output",
-          //      "Select a Directory for the output"))
-          //  {
-          //      rchtxbx_modify_frames_output.AppendText(fileName + "\r");
-          //      rchtxbx_modify_frames_output.ScrollToCaret();
-          //  }
-
-            ModifyImages.ShowAllImages(flowlayoutpnl_modfy_frames, 
+          ModifyImages.ShowAllImages(flowlayoutpnl_modfy_frames, 
                 @"C:\Users\itobo\source\repos\Acrostograph\Acrostograph\bin\x64\Debug\output", 
                 picbx_choosen_image,
-                rchtxbx_modify_frames_output,
+                lstbx_modify_frames_output,
             lbl_choosen_image);
 
         }
 
         private void btn_movelineup_modify_frames_output_rchtxbx_Click(object sender, EventArgs e)
         {
-            //Get the line number
-            int LineNumber = rchtxbx_modify_frames_output.GetLineFromCharIndex(rchtxbx_modify_frames_output.SelectionStart);
-
-            //move line up
-            RichTextBoxUtils.MoveLineUp(rchtxbx_modify_frames_output, rchtxbx_modify_frames_output.GetLineFromCharIndex(rchtxbx_modify_frames_output.SelectionStart));
-
+           ListBoxUtils.MoveLineUp(lstbx_modify_frames_output, lstbx_modify_frames_output.SelectedIndex);
         }
 
         private void btn_movelinedown_modify_frames_output_rchtxbx_Click(object sender, EventArgs e)
         {
-            RichTextBoxUtils.MoveLineDown(rchtxbx_modify_frames_output, rchtxbx_modify_frames_output.GetLineFromCharIndex(rchtxbx_modify_frames_output.SelectionStart));
-
-
-            //move cursor to be at same position as the line
-            rchtxbx_modify_frames_output.SelectionStart = rchtxbx_modify_frames_output.GetFirstCharIndexFromLine(rchtxbx_modify_frames_output.GetLineFromCharIndex(rchtxbx_modify_frames_output.SelectionStart) - 1);
-            rchtxbx_modify_frames_output.ScrollToCaret();
+            ListBoxUtils.MoveLineDown(lstbx_modify_frames_output, lstbx_modify_frames_output.SelectedIndex);
         }
 
         private void btn_deleteline_modify_frames_output_rchtxbx_Click(object sender, EventArgs e)
         {
-            RichTextBoxUtils.DeleteLine(rchtxbx_modify_frames_output, rchtxbx_modify_frames_output.GetLineFromCharIndex(rchtxbx_modify_frames_output.SelectionStart));
+            ListBoxUtils.DeleteLine(lstbx_modify_frames_output, lstbx_modify_frames_output.SelectedIndex);
         }
+
+        private void btn_clear_modify_frames_output_rchtxbx_Click(object sender, EventArgs e)
+        {
+            lstbx_modify_frames_output.Items.Clear();
+        }
+
+        
     }
 }

@@ -10,14 +10,22 @@ namespace Acrostograph
     class ModifyImages
     {
         private static PictureBox thePictureBox;
-        private static RichTextBox theRichTextBox;
+        private static ListBox theListBox;
         private static Label theLabel;
 
+        /// <summary>
+        /// Goes to the directory indicated and gets all the image files out and dinsplys them in the FlowLayoutPanel.
+        /// </summary>
+        /// <param name="myFlowLayoutPanel"></param>
+        /// <param name="myDirectory"></param>
+        /// <param name="myPictureBox"></param>
+        /// <param name="myListBox"></param>
+        /// <param name="myLabel"></param>
         public static void ShowAllImages(FlowLayoutPanel myFlowLayoutPanel, string myDirectory, 
-            PictureBox myPictureBox, RichTextBox myRichTextBox, Label myLabel)
+            PictureBox myPictureBox, ListBox myListBox, Label myLabel)
         {
             thePictureBox = myPictureBox;
-            theRichTextBox = myRichTextBox;
+            theListBox = myListBox;
             theLabel = myLabel;
 
             // Clear existing thumbnails
@@ -66,6 +74,11 @@ namespace Acrostograph
             }
         }
 
+        /// <summary>
+        /// Click on the image to add it to the list of images in the ListImageBox.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private static void PicBox_Click(object sender, EventArgs e)
         {
             PictureBox picBox = sender as PictureBox;
@@ -77,100 +90,9 @@ namespace Acrostograph
 
                 // Display the selected image in the PictureBox
                 thePictureBox.Image = new Bitmap(imageName);
-                theRichTextBox.AppendText(imageName + "\r");
-                theRichTextBox.ScrollToCaret();
-
+                theListBox.Items.Add(imageName + "\r");
+                
                 theLabel.Text = Path.GetFileName(imageName);
             }
         }
-
-
-
-
-
-
-
-
-        /*
-         *public ImageSelectorForm()
-           {
-               // Initialize components
-               flowLayoutPanel = new FlowLayoutPanel
-               {
-                   Dock = DockStyle.Top,
-                   AutoScroll = true,
-                   Height = 400
-               };
-
-               loadImagesButton = new Button
-               {
-                   Text = "Load Images",
-                   Dock = DockStyle.Top
-               };
-               loadImagesButton.Click += LoadImagesButton_Click;
-
-               selectedImagesListBox = new ListBox
-               {
-                   Dock = DockStyle.Fill
-               };
-
-               // Add components to the form
-               Controls.Add(selectedImagesListBox);
-               Controls.Add(loadImagesButton);
-               Controls.Add(flowLayoutPanel);
-           }
-
-           private void LoadImagesButton_Click(object sender, EventArgs e)
-           {
-               // Clear previous thumbnails
-               flowLayoutPanel.Controls.Clear();
-
-               // Specify the directory to load images from
-               string directoryPath = @"C:\Your\Image\Directory";
-
-               // Get all image files in the directory
-               var imageFiles = Directory.GetFiles(directoryPath, "*.*")
-                                         .Where(file => file.EndsWith(".jpg") || file.EndsWith(".png") || file.EndsWith(".bmp"))
-                                         .ToArray();
-
-               foreach (var imageFile in imageFiles)
-               {
-                   // Create a PictureBox for each image
-                   var pictureBox = new PictureBox
-                   {
-                       Image = Image.FromFile(imageFile),
-                       SizeMode = PictureBoxSizeMode.Zoom,
-                       Width = 100,
-                       Height = 100,
-                       Tag = imageFile // Store the file path in the Tag property
-                   };
-
-                   // Add click event to select the image
-                   pictureBox.Click += PictureBox_Click;
-
-                   // Add the PictureBox to the FlowLayoutPanel
-                   flowLayoutPanel.Controls.Add(pictureBox);
-               }
-           }
-
-           private void PictureBox_Click(object sender, EventArgs e)
-           {
-               var pictureBox = sender as PictureBox;
-               if (pictureBox != null)
-               {
-                   string imagePath = pictureBox.Tag.ToString();
-                   if (!selectedImagesListBox.Items.Contains(imagePath))
-                   {
-                       selectedImagesListBox.Items.Add(imagePath);
-                   }
-               }
-           }
-         */
-
-
-
-
-
-
-    }
-}
+    } }

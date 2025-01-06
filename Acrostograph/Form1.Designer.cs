@@ -58,7 +58,6 @@ namespace Acrostograph
             this.btn_video_creater = new System.Windows.Forms.Button();
             this.btn_play_created_video = new System.Windows.Forms.Button();
             this.tab_modify_frames = new System.Windows.Forms.TabPage();
-            this.rchtxbx_modify_frames_output = new System.Windows.Forms.RichTextBox();
             this.btn_list_files = new System.Windows.Forms.Button();
             this.flowlayoutpnl_modfy_frames = new System.Windows.Forms.FlowLayoutPanel();
             this.picbx_choosen_image = new System.Windows.Forms.PictureBox();
@@ -67,6 +66,8 @@ namespace Acrostograph
             this.btn_movelinedown_modify_frames_output_rchtxbx = new System.Windows.Forms.Button();
             this.btn_deleteline_modify_frames_output_rchtxbx = new System.Windows.Forms.Button();
             this.btn_clear_modify_frames_output_rchtxbx = new System.Windows.Forms.Button();
+            this.lstbx_modify_frames_output = new System.Windows.Forms.ListBox();
+            this.btn_create_modified_video = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.picbx_Original)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picbx_result)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -369,6 +370,8 @@ namespace Acrostograph
             // 
             // tab_modify_frames
             // 
+            this.tab_modify_frames.Controls.Add(this.btn_create_modified_video);
+            this.tab_modify_frames.Controls.Add(this.lstbx_modify_frames_output);
             this.tab_modify_frames.Controls.Add(this.btn_clear_modify_frames_output_rchtxbx);
             this.tab_modify_frames.Controls.Add(this.btn_deleteline_modify_frames_output_rchtxbx);
             this.tab_modify_frames.Controls.Add(this.btn_movelinedown_modify_frames_output_rchtxbx);
@@ -377,22 +380,12 @@ namespace Acrostograph
             this.tab_modify_frames.Controls.Add(this.picbx_choosen_image);
             this.tab_modify_frames.Controls.Add(this.flowlayoutpnl_modfy_frames);
             this.tab_modify_frames.Controls.Add(this.btn_list_files);
-            this.tab_modify_frames.Controls.Add(this.rchtxbx_modify_frames_output);
             this.tab_modify_frames.Location = new System.Drawing.Point(4, 29);
             this.tab_modify_frames.Name = "tab_modify_frames";
             this.tab_modify_frames.Size = new System.Drawing.Size(1146, 611);
             this.tab_modify_frames.TabIndex = 4;
             this.tab_modify_frames.Text = "Modify Frames";
             this.tab_modify_frames.UseVisualStyleBackColor = true;
-            // 
-            // rchtxbx_modify_frames_output
-            // 
-            this.rchtxbx_modify_frames_output.Location = new System.Drawing.Point(31, 29);
-            this.rchtxbx_modify_frames_output.Name = "rchtxbx_modify_frames_output";
-            this.rchtxbx_modify_frames_output.Size = new System.Drawing.Size(503, 182);
-            this.rchtxbx_modify_frames_output.TabIndex = 0;
-            this.rchtxbx_modify_frames_output.Text = "";
-            this.rchtxbx_modify_frames_output.WordWrap = false;
             // 
             // btn_list_files
             // 
@@ -407,9 +400,9 @@ namespace Acrostograph
             // flowlayoutpnl_modfy_frames
             // 
             this.flowlayoutpnl_modfy_frames.AutoScroll = true;
-            this.flowlayoutpnl_modfy_frames.Location = new System.Drawing.Point(652, 3);
+            this.flowlayoutpnl_modfy_frames.Location = new System.Drawing.Point(652, 28);
             this.flowlayoutpnl_modfy_frames.Name = "flowlayoutpnl_modfy_frames";
-            this.flowlayoutpnl_modfy_frames.Size = new System.Drawing.Size(491, 605);
+            this.flowlayoutpnl_modfy_frames.Size = new System.Drawing.Size(491, 580);
             this.flowlayoutpnl_modfy_frames.TabIndex = 2;
             // 
             // picbx_choosen_image
@@ -434,9 +427,9 @@ namespace Acrostograph
             // btn_movelineup_modify_frames_output_rchtxbx
             // 
             this.btn_movelineup_modify_frames_output_rchtxbx.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_movelineup_modify_frames_output_rchtxbx.Location = new System.Drawing.Point(556, 31);
+            this.btn_movelineup_modify_frames_output_rchtxbx.Location = new System.Drawing.Point(556, 23);
             this.btn_movelineup_modify_frames_output_rchtxbx.Name = "btn_movelineup_modify_frames_output_rchtxbx";
-            this.btn_movelineup_modify_frames_output_rchtxbx.Size = new System.Drawing.Size(45, 35);
+            this.btn_movelineup_modify_frames_output_rchtxbx.Size = new System.Drawing.Size(45, 45);
             this.btn_movelineup_modify_frames_output_rchtxbx.TabIndex = 8;
             this.btn_movelineup_modify_frames_output_rchtxbx.Text = "↑";
             this.btn_movelineup_modify_frames_output_rchtxbx.UseVisualStyleBackColor = true;
@@ -445,9 +438,9 @@ namespace Acrostograph
             // btn_movelinedown_modify_frames_output_rchtxbx
             // 
             this.btn_movelinedown_modify_frames_output_rchtxbx.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_movelinedown_modify_frames_output_rchtxbx.Location = new System.Drawing.Point(556, 72);
+            this.btn_movelinedown_modify_frames_output_rchtxbx.Location = new System.Drawing.Point(556, 74);
             this.btn_movelinedown_modify_frames_output_rchtxbx.Name = "btn_movelinedown_modify_frames_output_rchtxbx";
-            this.btn_movelinedown_modify_frames_output_rchtxbx.Size = new System.Drawing.Size(45, 35);
+            this.btn_movelinedown_modify_frames_output_rchtxbx.Size = new System.Drawing.Size(45, 45);
             this.btn_movelinedown_modify_frames_output_rchtxbx.TabIndex = 9;
             this.btn_movelinedown_modify_frames_output_rchtxbx.Text = "↓";
             this.btn_movelinedown_modify_frames_output_rchtxbx.UseVisualStyleBackColor = true;
@@ -456,9 +449,9 @@ namespace Acrostograph
             // btn_deleteline_modify_frames_output_rchtxbx
             // 
             this.btn_deleteline_modify_frames_output_rchtxbx.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_deleteline_modify_frames_output_rchtxbx.Location = new System.Drawing.Point(556, 113);
+            this.btn_deleteline_modify_frames_output_rchtxbx.Location = new System.Drawing.Point(556, 125);
             this.btn_deleteline_modify_frames_output_rchtxbx.Name = "btn_deleteline_modify_frames_output_rchtxbx";
-            this.btn_deleteline_modify_frames_output_rchtxbx.Size = new System.Drawing.Size(45, 35);
+            this.btn_deleteline_modify_frames_output_rchtxbx.Size = new System.Drawing.Size(45, 45);
             this.btn_deleteline_modify_frames_output_rchtxbx.TabIndex = 10;
             this.btn_deleteline_modify_frames_output_rchtxbx.Text = "→";
             this.btn_deleteline_modify_frames_output_rchtxbx.UseVisualStyleBackColor = true;
@@ -472,6 +465,26 @@ namespace Acrostograph
             this.btn_clear_modify_frames_output_rchtxbx.TabIndex = 11;
             this.btn_clear_modify_frames_output_rchtxbx.Text = "Clear";
             this.btn_clear_modify_frames_output_rchtxbx.UseVisualStyleBackColor = true;
+            this.btn_clear_modify_frames_output_rchtxbx.Click += new System.EventHandler(this.btn_clear_modify_frames_output_rchtxbx_Click);
+            // 
+            // lstbx_modify_frames_output
+            // 
+            this.lstbx_modify_frames_output.FormattingEnabled = true;
+            this.lstbx_modify_frames_output.ItemHeight = 20;
+            this.lstbx_modify_frames_output.Location = new System.Drawing.Point(40, 28);
+            this.lstbx_modify_frames_output.Name = "lstbx_modify_frames_output";
+            this.lstbx_modify_frames_output.Size = new System.Drawing.Size(494, 164);
+            this.lstbx_modify_frames_output.TabIndex = 12;
+            // 
+            // btn_create_modified_video
+            // 
+            this.btn_create_modified_video.Location = new System.Drawing.Point(495, 564);
+            this.btn_create_modified_video.Name = "btn_create_modified_video";
+            this.btn_create_modified_video.Size = new System.Drawing.Size(120, 38);
+            this.btn_create_modified_video.TabIndex = 13;
+            this.btn_create_modified_video.Text = "Create Video";
+            this.btn_create_modified_video.UseVisualStyleBackColor = true;
+            this.btn_create_modified_video.Click += new System.EventHandler(this.btn_create_modified_video_Click);
             // 
             // Form1
             // 
@@ -535,7 +548,6 @@ namespace Acrostograph
         private System.Windows.Forms.Button btn_play_created_video;
         private System.Windows.Forms.TabPage tab_modify_frames;
         private System.Windows.Forms.Button btn_list_files;
-        private System.Windows.Forms.RichTextBox rchtxbx_modify_frames_output;
         private System.Windows.Forms.FlowLayoutPanel flowlayoutpnl_modfy_frames;
         private System.Windows.Forms.PictureBox picbx_choosen_image;
         private System.Windows.Forms.Label lbl_choosen_image;
@@ -543,6 +555,8 @@ namespace Acrostograph
         private System.Windows.Forms.Button btn_deleteline_modify_frames_output_rchtxbx;
         private System.Windows.Forms.Button btn_movelinedown_modify_frames_output_rchtxbx;
         private System.Windows.Forms.Button btn_movelineup_modify_frames_output_rchtxbx;
+        private System.Windows.Forms.ListBox lstbx_modify_frames_output;
+        private System.Windows.Forms.Button btn_create_modified_video;
     }
 }
 
