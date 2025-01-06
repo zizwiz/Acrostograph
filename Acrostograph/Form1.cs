@@ -281,8 +281,15 @@ namespace Acrostograph
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             // Backup Images.
-
-
+            try
+            {
+                FolderUtils.BackupFiles(myFolderToBackup, myBackupDirectory);
+                MsgBox.Show("Folder backed up", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MsgBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
         }
     }
