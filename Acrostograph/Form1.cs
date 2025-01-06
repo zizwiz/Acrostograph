@@ -6,6 +6,7 @@ using System.IO;
 using System.Reflection;
 using System.Windows.Forms;
 using Acrostograph.utilities;
+using CenteredMessagebox;
 
 namespace Acrostograph
 {
@@ -267,6 +268,22 @@ namespace Acrostograph
             lstbx_modify_frames_output.Items.Clear();
         }
 
-        
+        private void btn_backup_images_Click(object sender, EventArgs e)
+        {
+            // Choose folder to backup
+            string myFolderToBackup = OpenFolderDialogs.ChooseDirectory(null, "Select a Directory to Backup");
+            
+            // Choose the directory to place the images in (999 = error)
+            string myBackupDirectory = OpenFolderDialogs.ChooseDirectory(null, "Select a Directory for the output");
+
+            if (myBackupDirectory == "999")
+                MsgBox.Show("Check you have permission to create the directory", "Unable to open Directory",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            // Backup Images.
+
+
+
+        }
     }
 }

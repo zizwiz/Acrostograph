@@ -73,7 +73,15 @@ namespace Acrostograph.utilities
 
             using (FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog())
             {
-                folderBrowserDialog.SelectedPath = mySelectedPath;
+                if (mySelectedPath != null)
+                {
+                    folderBrowserDialog.SelectedPath = mySelectedPath;
+                }
+                else
+                {
+                    folderBrowserDialog.SelectedPath = Application.StartupPath;
+                }
+
                 folderBrowserDialog.Description = myDescription;
                 folderBrowserDialog.ShowNewFolderButton = true;
                 

@@ -68,6 +68,7 @@ namespace Acrostograph
             this.btn_clear_modify_frames_output_rchtxbx = new System.Windows.Forms.Button();
             this.lstbx_modify_frames_output = new System.Windows.Forms.ListBox();
             this.btn_create_modified_video = new System.Windows.Forms.Button();
+            this.btn_backup_images = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.picbx_Original)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picbx_result)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -139,6 +140,7 @@ namespace Acrostograph
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.btn_backup_images);
             this.tabPage1.Controls.Add(this.picbx_result);
             this.tabPage1.Controls.Add(this.btn_open_image);
             this.tabPage1.Controls.Add(this.btn_change_colour);
@@ -146,7 +148,7 @@ namespace Acrostograph
             this.tabPage1.Location = new System.Drawing.Point(4, 29);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(989, 574);
+            this.tabPage1.Size = new System.Drawing.Size(1146, 611);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "tabPage1";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -157,7 +159,7 @@ namespace Acrostograph
             this.tab_video_player.Location = new System.Drawing.Point(4, 29);
             this.tab_video_player.Name = "tab_video_player";
             this.tab_video_player.Padding = new System.Windows.Forms.Padding(3);
-            this.tab_video_player.Size = new System.Drawing.Size(989, 574);
+            this.tab_video_player.Size = new System.Drawing.Size(1146, 611);
             this.tab_video_player.TabIndex = 1;
             this.tab_video_player.Text = "Video Player";
             this.tab_video_player.UseVisualStyleBackColor = true;
@@ -174,7 +176,7 @@ namespace Acrostograph
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 80F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(983, 568);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1140, 605);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
             // panel1
@@ -183,7 +185,7 @@ namespace Acrostograph
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(3, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(977, 482);
+            this.panel1.Size = new System.Drawing.Size(1134, 519);
             this.panel1.TabIndex = 0;
             // 
             // WinMediaPlayer
@@ -193,7 +195,7 @@ namespace Acrostograph
             this.WinMediaPlayer.Location = new System.Drawing.Point(0, 0);
             this.WinMediaPlayer.Name = "WinMediaPlayer";
             this.WinMediaPlayer.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("WinMediaPlayer.OcxState")));
-            this.WinMediaPlayer.Size = new System.Drawing.Size(977, 482);
+            this.WinMediaPlayer.Size = new System.Drawing.Size(1134, 519);
             this.WinMediaPlayer.TabIndex = 0;
             this.WinMediaPlayer.MediaError += new AxWMPLib._WMPOCXEvents_MediaErrorEventHandler(this.WinMediaPlayer_MediaError);
             // 
@@ -204,9 +206,9 @@ namespace Acrostograph
             this.panel2.Controls.Add(this.btn_close_video);
             this.panel2.Controls.Add(this.btn_open_video);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(3, 491);
+            this.panel2.Location = new System.Drawing.Point(3, 528);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(977, 74);
+            this.panel2.Size = new System.Drawing.Size(1134, 74);
             this.panel2.TabIndex = 1;
             // 
             // lbl_tot_video_time
@@ -258,7 +260,7 @@ namespace Acrostograph
             this.tab_image_maker.Controls.Add(this.btn_split_video);
             this.tab_image_maker.Location = new System.Drawing.Point(4, 29);
             this.tab_image_maker.Name = "tab_image_maker";
-            this.tab_image_maker.Size = new System.Drawing.Size(989, 574);
+            this.tab_image_maker.Size = new System.Drawing.Size(1146, 611);
             this.tab_image_maker.TabIndex = 2;
             this.tab_image_maker.Text = "Image maker";
             this.tab_image_maker.UseVisualStyleBackColor = true;
@@ -336,7 +338,7 @@ namespace Acrostograph
             this.tab_video_maker.Controls.Add(this.btn_video_creater);
             this.tab_video_maker.Location = new System.Drawing.Point(4, 29);
             this.tab_video_maker.Name = "tab_video_maker";
-            this.tab_video_maker.Size = new System.Drawing.Size(989, 574);
+            this.tab_video_maker.Size = new System.Drawing.Size(1146, 611);
             this.tab_video_maker.TabIndex = 3;
             this.tab_video_maker.Text = "Video Maker";
             this.tab_video_maker.UseVisualStyleBackColor = true;
@@ -486,6 +488,16 @@ namespace Acrostograph
             this.btn_create_modified_video.UseVisualStyleBackColor = true;
             this.btn_create_modified_video.Click += new System.EventHandler(this.btn_create_modified_video_Click);
             // 
+            // btn_backup_images
+            // 
+            this.btn_backup_images.Location = new System.Drawing.Point(510, 471);
+            this.btn_backup_images.Name = "btn_backup_images";
+            this.btn_backup_images.Size = new System.Drawing.Size(141, 42);
+            this.btn_backup_images.TabIndex = 8;
+            this.btn_backup_images.Text = "Backup Images";
+            this.btn_backup_images.UseVisualStyleBackColor = true;
+            this.btn_backup_images.Click += new System.EventHandler(this.btn_backup_images_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -557,6 +569,7 @@ namespace Acrostograph
         private System.Windows.Forms.Button btn_movelineup_modify_frames_output_rchtxbx;
         private System.Windows.Forms.ListBox lstbx_modify_frames_output;
         private System.Windows.Forms.Button btn_create_modified_video;
+        private System.Windows.Forms.Button btn_backup_images;
     }
 }
 

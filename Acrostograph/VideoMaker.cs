@@ -12,8 +12,6 @@ namespace Acrostograph
 {
     class VideoMaker
     {
-
-
         public static void JoinImagesintoVideo(RichTextBox myRichTextBox, ListBox myListBox)
         {
             string[] imageFilesArray = new string[0]; //just initialise will resize later
