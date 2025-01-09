@@ -4,9 +4,11 @@ using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Reflection;
+using System.Threading;
 using System.Windows.Forms;
 using Acrostograph.utilities;
 using CenteredMessagebox;
+using ColourChanger.utils;
 
 namespace Acrostograph
 {
@@ -21,6 +23,35 @@ namespace Acrostograph
         {
             Text += " : v" + Assembly.GetExecutingAssembly().GetName().Version; // put version number into top bar
 
+            // Add 5 rows to dataGridView
+            for (int x = 0; x < 5; x++)
+            {
+                dgv_ColourFiltersData.Rows.Add();
+            }
+
+            //Add headers to rows
+            dgv_ColourFiltersData.Rows[0].HeaderCell.Value = "Red Scaling Factor";
+            dgv_ColourFiltersData.Rows[1].HeaderCell.Value = "Green Scaling Factor";
+            dgv_ColourFiltersData.Rows[2].HeaderCell.Value = "Blue Scaling Factor";
+            dgv_ColourFiltersData.Rows[3].HeaderCell.Value = "Alpha Scaling Factor";
+            dgv_ColourFiltersData.Rows[4].HeaderCell.Value = "Brightness Scaling Factor";
+
+
+            // Resize the row headers
+            dgv_ColourFiltersData.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
+
+            //Load the image into the picturebox so we can use it
+            picbx_Original.Image = Properties.Resources.image;
+
+            //if the xml file is not present then create it from the template one in resources 
+            if (!File.Exists("ColourFilterData.xml"))
+                File.WriteAllText("ColourFilterData.xml", Properties.Resources.ColourFilterData);
+
+             //Invoke used to prevent cross threading
+             BeginInvoke(new Action(() =>
+             {
+                cmbobx_ColourFilters.SelectedItem = XMLUtils.PopulateColourFiltersCmboBx(cmbobx_ColourFilters, "Reset");
+             }));
         }
 
         private void btn_open_image_Click(object sender, EventArgs e)
@@ -291,6 +322,28 @@ namespace Acrostograph
                 MsgBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
+        }
+
+        private void cmbobx_ColourFilters_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            XMLUtils.PopulateColourFiltersDataGridView(dgv_ColourFiltersData, cmbobx_ColourFilters.Text, lbl_filter_name);
+            
+            if (cmbobx_ColourFilters.Text == "Choose the filter colour to use")
+            {
+                //let the user choose the filter colour
+                string[] myColourData = ColouringUtils.ChooseColor();
+                dgv_ColourFiltersData[0, 0].Value = myColourData[0];
+                dgv_ColourFiltersData[1, 1].Value = myColourData[1];
+                dgv_ColourFiltersData[2, 2].Value = myColourData[2];
+                dgv_ColourFiltersData[3, 3].Value = myColourData[3];
+            }
+
+            if (!ImageUtilities.ApplyFilterToImage(picbx_Original, picbx_result, 0, chkbx_Superimpose, dgv_ColourFiltersData))
+            {
+                MsgBox.Show("Something wrong with filter or images", "Error", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
+            
         }
     }
 }
